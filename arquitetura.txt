@@ -1,0 +1,23 @@
+/project-root
+│
+├── index.html
+│
+├── /css
+│   ├── style.css
+│   ├── theme.css
+│   └── animations.css
+│
+├── /js
+│   ├── game.js            (lógica principal)
+│   ├── ui.js              (interface, mensagens, HUD/stats)
+│   ├── cards.js           (geração, clique, match)
+│   ├── timer.js           (tempo)
+│   ├── streak.js          (bônus de sequência)
+│   ├── sound.js           (Tone.js)
+│   ├── leaderboard-local.js
+│   ├── leaderboard-global.js
+│   ├── firebase-init.js
+│   └── main.js            (arquivo que inicia tudo)
+│
+└── /assets
+    └── (sons, imagens, etc)
