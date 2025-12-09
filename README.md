@@ -1,8 +1,10 @@
-🎮 Jogo da Memória Neon Extremo
+# 🎮 Jogo da Memória Neon Extremo
+
 Um jogo da memória moderno com tema neon, efeitos sonoros com Tone.js e integração com Firebase para placar global.
 
-📁 Estrutura do Projeto
-text
+## 📁 Estrutura do Projeto
+
+```
 /project-root
 │
 ├── 📄 index.html                    (HTML principal)
@@ -32,24 +34,34 @@ text
 ├── 🔧 .gitignore
 ├── 📝 package.json
 └── 📖 README.md
-🚀 Como Usar
-1️⃣ Estrutura de Importações no HTML
-CSS (no <head>)
-xml
+```
+
+---
+
+## 🚀 Como Usar
+
+### 1️⃣ **Estrutura de Importações no HTML**
+
+#### **CSS** (no `<head>`)
+```html
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/theme.css">
 <link rel="stylesheet" href="css/animations.css">
 <link rel="stylesheet" href="css/cards.css">
 <link rel="stylesheet" href="css/stats.css">
-Bibliotecas Externas (no <head>)
-xml
+```
+
+#### **Bibliotecas Externas** (no `<head>`)
+```html
 <!-- Tone.js para efeitos sonoros -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
 
 <!-- Firebase (type="module") -->
 <script type="module" src="js/firebase-init.js"></script>
-JavaScript (no final do <body> - ORDEM IMPORTA!)
-xml
+```
+
+#### **JavaScript** (no final do `<body>` - ORDEM IMPORTA!)
+```html
 <!-- 1. Configuração e variáveis -->
 <script src="js/game.js"></script>
 
@@ -71,108 +83,116 @@ xml
 
 <!-- 7. Inicialização (deve ser por último) -->
 <script src="js/main.js"></script>
-🎮 Funcionalidades
-🎨 Temas Neon
-🔵 Azul (padrão)
+```
 
-🟣 Roxo
+---
 
-🟢 Verde
+## 🎮 Funcionalidades
 
-🩷 Rosa
+### 🎨 **Temas Neon**
+- 🔵 Azul (padrão)
+- 🟣 Roxo
+- 🟢 Verde
+- 🩷 Rosa
+- 🟠 Laranja
 
-🟠 Laranja
+### 📊 **Níveis de Dificuldade**
+- **Fácil**: 3x2 (6 cartas) - 3 pares
+- **Médio**: 4x3 (12 cartas) - 6 pares ⭐ *padrão*
+- **Difícil**: 5x4 (20 cartas) - 10 pares
+- **Extremo**: 8x5 (40 cartas) - 20 pares
+- **Inferno**: 10x8 (80 cartas) - 40 pares 🔥
 
-📊 Níveis de Dificuldade
-Fácil: 3x2 (6 cartas) - 3 pares
+### ⚡ **Bônus e Power-Ups**
+- **Streak Bonus**: +3 segundos a cada 3 acertos seguidos
+- **Power-Up Card**: Revela um par aleatório (aparece em dificuldades altas)
 
-Médio: 4x3 (12 cartas) - 6 pares ⭐ padrão
+### 🏆 **Placar**
+- **Recorde Local**: Salvo em `localStorage` (tempo + tentativas)
+- **Placar Global**: Integrado com Firebase Firestore (top 10 por nível)
 
-Difícil: 5x4 (20 cartas) - 10 pares
+### 🔊 **Efeitos Sonoros** (Tone.js)
+- Flip: Nota C5
+- Match: Acorde maior (C5, E5, G5)
+- Error: Nota F#3 grave
+- Streak: Notas altas (G6, G7)
+- Power-Up: Acorde maior (E5, G5, C6)
+- Win: Acorde final (C5, E5, G5, C6)
 
-Extremo: 8x5 (40 cartas) - 20 pares
+### ⏱️ **Timer**
+- Conta regressiva do tempo decorrido
+- Bônus de tempo por streak
+- Formatação em MM:SS
 
-Inferno: 10x8 (80 cartas) - 40 pares 🔥
+---
 
-⚡ Bônus e Power-Ups
-Streak Bonus: +3 segundos a cada 3 acertos seguidos
+## 📝 Arquivos CSS Detalhados
 
-Power-Up Card: Revela um par aleatório (aparece em dificuldades altas)
-
-🏆 Placar
-Recorde Local: Salvo em localStorage (tempo + tentativas)
-
-Placar Global: Integrado com Firebase Firestore (top 10 por nível)
-
-🔊 Efeitos Sonoros (Tone.js)
-Flip: Nota C5
-
-Match: Acorde maior (C5, E5, G5)
-
-Error: Nota F#3 grave
-
-Streak: Notas altas (G6, G7)
-
-Power-Up: Acorde maior (E5, G5, C6)
-
-Win: Acorde final (C5, E5, G5, C6)
-
-⏱️ Timer
-Conta regressiva do tempo decorrido
-
-Bônus de tempo por streak
-
-Formatação em MM:SS
-
-📝 Arquivos CSS Detalhados
-style.css
-text
+### **style.css**
+```
 - Reset (*) e configuração geral
 - Body com gradient background
 - #game-container com flexbox
 - Layout responsivo (mobile, tablet, desktop)
 - Media queries
-theme.css
-text
+```
+
+### **theme.css**
+```
 - Variáveis CSS (--color-neon-*)
 - Paletas de cores para cada tema
 - Classes .theme-* para seleção dinâmica
-animations.css
-text
+```
+
+### **animations.css**
+```
 - @keyframes para todas as animações
 - fadeInUp, glow, pulse, shake, flip, slideIn, bounce, etc.
 - neonGlow, matchedFade, errorShake
-cards.css
-text
+```
+
+### **cards.css**
+```
 - Grid #board com display: grid
 - .card com transform-style: preserve-3d (3D flip)
 - .card.flipped, .card.matched, .card.error
 - .card.power-up com estilo especial
 - Responsividade para diferentes tamanhos
-stats.css
-text
+```
+
+### **stats.css**
+```
 - .stat-box para caixas de estatísticas
 - #streak-bar e #streak-fill (barra de progresso)
 - #leaderboard-list (placar)
 - Botões e selects com hover effects
 - #message-box (modal de vitória)
-📝 Arquivos JavaScript Detalhados
-firebase-init.js (type="module")
-javascript
+```
+
+---
+
+## 📝 Arquivos JavaScript Detalhados
+
+### **firebase-init.js** (type="module")
+```javascript
 - Importação de Firebase SDK
 - Inicialização de Auth (anônimo + custom token)
 - Inicialização de Firestore
 - window.loadGlobalLeaderboard(level) - Carrega top 10
 - window.saveGlobalScore(level, time, attempts) - Salva score
 - onAuthStateChanged - Listener de autenticação
-game.js
-javascript
+```
+
+### **game.js**
+```javascript
 - THEMES_CONFIG - Configurações de temas
 - Variáveis globais (cards, flippedCards, matchedPairs, etc)
 - updateStreak(isMatch) - Lógica de streak + bônus de tempo
 - activatePowerUp(card) - Ativa power-up de dica
-main.js
-javascript
+```
+
+### **main.js**
+```javascript
 - shuffle(array) - Embaralha array
 - createCard(type, value, index, gridColumns) - Cria elemento <div> carta
 - handleCardClick(card) - Listener de clique
@@ -180,71 +200,79 @@ javascript
 - showWinMessage() - Exibe modal de vitória
 - startQuickView(cardsToFlip) - Modo "visão rápida" antes de começar
 - window.initializeGame() - Inicializa o jogo (função principal)
-timer.js
-javascript
+```
+
+### **timer.js**
+```javascript
 - formatTime(totalSeconds) - Converte segundos em MM:SS
 - updateTimerDisplay() - Atualiza display do timer
 - startTimer() - Inicia o cronômetro
 - stopTimer() - Para o cronômetro
-sound.js
-javascript
+```
+
+### **sound.js**
+```javascript
 - const synth - Tone.PolySynth configurado
 - playSound(type) - Switch para diferentes tipos de som
 - Tipos: 'flip', 'match', 'error', 'streak', 'powerup', 'win'
-ui.js
-javascript
+```
+
+### **ui.js**
+```javascript
 - window.applyTheme() - Aplica classe CSS do tema (theme-*)
-cards.js
-javascript
+```
+
+### **cards.js**
+```javascript
 - updateGlobalLeaderboard() - Carrega e exibe top 10 global
-leaderboard-local.js
-javascript
+```
+
+### **leaderboard-local.js**
+```javascript
 - const HIGH_SCORE_KEY - Chave do localStorage
 - loadHighScores() - Carrega scores do localStorage
 - updateHighScoreDisplay() - Atualiza display de recorde
 - saveHighScore(level, time, finalAttempts) - Salva recorde local
-leaderboard-global.js
-javascript
+```
+
+### **leaderboard-global.js**
+```javascript
 - Referência às funções em firebase-init.js
 - window.loadGlobalLeaderboard(level)
 - window.saveGlobalScore(level, time, attempts)
-🔌 Ordem de Carregamento (IMPORTANTE!)
-CSS (no head)
+```
 
-style.css → theme.css → animations.css → cards.css → stats.css
+---
 
-Bibliotecas (no head)
+## 🔌 Ordem de Carregamento (IMPORTANTE!)
 
-Tone.js
+1. **CSS** (no head)
+   - style.css → theme.css → animations.css → cards.css → stats.css
 
-Firebase (type="module")
+2. **Bibliotecas** (no head)
+   - Tone.js
+   - Firebase (type="module")
 
-HTML Body
+3. **HTML Body**
+   - Elementos DOM
 
-Elementos DOM
+4. **JavaScript** (antes de `</body>`)
+   - game.js (variáveis e config)
+   - timer.js (funções de tempo)
+   - sound.js (áudio + refs DOM)
+   - ui.js (temas)
+   - cards.js (leaderboard global)
+   - leaderboard-local.js (recordes locais)
+   - leaderboard-global.js (referência)
+   - **main.js (ÚLTIMO - inicializa tudo)**
 
-JavaScript (antes de </body>)
+---
 
-game.js (variáveis e config)
+## 🛠️ Configuração Firebase
 
-timer.js (funções de tempo)
-
-sound.js (áudio + refs DOM)
-
-ui.js (temas)
-
-cards.js (leaderboard global)
-
-leaderboard-local.js (recordes locais)
-
-leaderboard-global.js (referência)
-
-main.js (ÚLTIMO - inicializa tudo)
-
-🛠️ Configuração Firebase
 Para usar o placar global, configure as variáveis de ambiente:
 
-javascript
+```javascript
 // Em firebase-init.js, adicionar:
 const __app_id = "seu-app-id";
 const __firebase_config = {
@@ -253,26 +281,34 @@ const __firebase_config = {
     projectId: "...",
     // ... outras configs
 };
+```
+
 Ou use a Canvas API se estiver no Canvas LMS.
 
-📱 Responsividade
-Mobile (< 768px): Layout stack vertical, cards menores
+---
 
-Tablet (768px - 990px): Grid 2 colunas compactas
+## 📱 Responsividade
 
-Desktop (> 990px): Layout lado a lado ideal
+- **Mobile** (< 768px): Layout stack vertical, cards menores
+- **Tablet** (768px - 990px): Grid 2 colunas compactas
+- **Desktop** (> 990px): Layout lado a lado ideal
 
-🎯 Como Estender
-Adicionar novo tema:
-css
+---
+
+## 🎯 Como Estender
+
+### Adicionar novo tema:
+```css
 /* Em theme.css */
 .theme-cyan {
     --color-primary-neon: #00FFFF;
     --color-neon-success: #00FF00;
     --color-neon-error: #FF1493;
 }
-Adicionar novo nível:
-javascript
+```
+
+### Adicionar novo nível:
+```javascript
 // Em game.js - THEMES_CONFIG
 'ultra': { 
     emojis: [...100 emojis...], 
@@ -280,41 +316,47 @@ javascript
     cols: 14, 
     name: "ULTRA (14x10)" 
 }
-Adicionar novo som:
-javascript
+```
+
+### Adicionar novo som:
+```javascript
 // Em sound.js - playSound()
 case 'custom':
     synth.triggerAttackRelease(["C5", "G5"], "8n");
     break;
-🐛 Troubleshooting
-Problema	Solução
-Cartas não aparecem	Verificar se main.js está sendo carregado
-Sons não funcionam	Confirmar que Tone.js está no CDN
-Firebase não conecta	Verificar credenciais em firebase-init.js
-Estilos não aplicam	Verificar ordem de CSS (theme.css após style.css)
-Placar não salva	Verificar localStorage habilitado no navegador
-📄 Licença
-Desenvolvido por Ferather - GitHub
+```
 
-🎓 Aprendizados
+---
+
+## 🐛 Troubleshooting
+
+| Problema | Solução |
+|----------|---------|
+| Cartas não aparecem | Verificar se `main.js` está sendo carregado |
+| Sons não funcionam | Confirmar que Tone.js está no CDN |
+| Firebase não conecta | Verificar credenciais em firebase-init.js |
+| Estilos não aplicam | Verificar ordem de CSS (theme.css após style.css) |
+| Placar não salva | Verificar localStorage habilitado no navegador |
+
+---
+
+## 📄 Licença
+
+Desenvolvido por **Ferather** - [GitHub](https://github.com/ferather-An)
+
+---
+
+## 🎓 Aprendizados
+
 Este projeto demonstra:
+- ✅ Modularização de CSS e JavaScript
+- ✅ CSS Grid para layout responsivo
+- ✅ CSS Custom Properties (--color-*)
+- ✅ CSS 3D Transforms (flip effect)
+- ✅ Web Audio API com Tone.js
+- ✅ Firebase Auth + Firestore
+- ✅ localStorage para dados locais
+- ✅ Event delegation com listeners
+- ✅ Animações CSS avançadas
+- ✅ Boas práticas de organização
 
-✅ Modularização de CSS e JavaScript
-
-✅ CSS Grid para layout responsivo
-
-✅ CSS Custom Properties (--color-*)
-
-✅ CSS 3D Transforms (flip effect)
-
-✅ Web Audio API com Tone.js
-
-✅ Firebase Auth + Firestore
-
-✅ localStorage para dados locais
-
-✅ Event delegation com listeners
-
-✅ Animações CSS avançadas
-
-✅ Boas práticas de organização
