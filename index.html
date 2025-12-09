@@ -20,3 +20,115 @@
 <link rel="stylesheet" href="/css/animations.css">
 <link rel="stylesheet" href="/css/cards.css">
 <link rel="stylesheet" href="/css/stats.css">
+
+<!-- ===== BIBLIOTECAS EXTERNAS ===== -->
+    <!-- Tone.js para efeitos sonoros -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+
+    <!-- Firebase (para placar global) -->
+    <script type="module" src="js/firebase-init.js"></script>
+</head>
+<body class="theme-blue">
+    <div id="game-container">
+        <h1 class="title">🎮 Jogo da Memória Emoji</h1>
+        <p class="subtitle">Tente encontrar todos os pares no menor tempo possível!</p>
+
+        <!-- ===== CONTROLES ===== -->
+        <div id="controls">
+            <label for="difficulty-select">Nível:</label>
+            <select id="difficulty-select" onchange="initializeGame(true)">
+                <option value="easy">Fácil (3x2)</option>
+                <option value="classic" selected>Médio (4x3)</option>
+                <option value="hard">Difícil (5x4)</option>
+                <option value="extreme">EXTREMO (8x5)</option>
+                <option value="inferno">🔥 INFERNO (10x8) 🔥</option>
+            </select>
+
+            <label for="theme-select">Tema Neon:</label>
+            <select id="theme-select" onchange="applyTheme()">
+                <option value="blue">🔵 Azul</option>
+                <option value="purple">🟣 Roxo</option>
+                <option value="green">🟢 Verde</option>
+                <option value="pink">🩷 Rosa</option>
+                <option value="orange">🟠 Laranja</option>
+            </select>
+        </div>
+
+        <!-- ===== LAYOUT PRINCIPAL (FLEX) ===== -->
+        <div id="main-content-wrapper">
+            <!-- COLUNA ESQUERDA: ESTATÍSTICAS -->
+            <div id="stats-area">
+                <h2>📊 Estatísticas</h2>
+                <div id="stats" class="stat-box">
+                    <div id="timer-display" class="stat-value">Tempo: 00:00</div>
+                    <div id="attempts" class="stat-value">Tentativas: 0</div>
+                    <div id="matches" class="stat-value">Pares: 0/6</div>
+                </div>
+
+                <div id="streak-wrapper" class="stat-box">
+                    <div id="streak-display">Sequência: 0</div>
+                    <div id="streak-bar">
+                        <div id="streak-fill"></div>
+                    </div>
+                </div>
+
+                <div id="high-score" class="stat-box">
+                    Recorde Local: --:-- (0 tent.)
+                </div>
+
+                <h2 style="margin-top: 20px;">🏆 Placar Global</h2>
+                <div id="leaderboard-status" style="font-size: 0.9rem; color: #888;">Carregando...</div>
+                <ul id="leaderboard-list">
+                    <!-- Scores globais aparecem aqui -->
+                </ul>
+            </div>
+
+            <!-- COLUNA DIREITA: TABULEIRO -->
+            <div id="board-area">
+                <div id="board" class="card-grid">
+                    <!-- As cartas são geradas aqui pelo JavaScript -->
+                </div>
+                <button id="restart-button" onclick="initializeGame()">🔄 Reiniciar Jogo</button>
+            </div>
+        </div>
+
+        <!-- RODAPÉ -->
+        <div id="footer-attribution">
+            Desenvolvido por <strong>Ferather</strong> 
+            (<a href="https://github.com/ferather-An" target="_blank">GitHub</a>)
+        </div>
+    </div>
+
+    <!-- CAIXA DE MENSAGEM (Modal) -->
+    <div id="message-box" class="hidden">
+        <div class="message-content" id="message-text"></div>
+    </div>
+
+    <!-- ===== IMPORTAÇÕES DE JAVASCRIPT ===== -->
+    <!-- Ordem de carregamento é IMPORTANTE -->
+
+    <!-- 1. Configuração e variáveis globais -->
+    <script src="js/game.js"></script>
+
+    <!-- 2. Funções utilitárias -->
+    <script src="js/timer.js"></script>
+    <script src="js/sound.js"></script>
+
+    <!-- 3. Interface e temas -->
+    <script src="js/ui.js"></script>
+
+    <!-- 4. Manipulação de cartas -->
+    <script src="js/cards.js"></script>
+
+    <!-- 5. Recordes locais -->
+    <script src="js/leaderboard-local.js"></script>
+
+    <!-- 6. Recordes globais (usa Firestore) -->
+    <script src="js/leaderboard-global.js"></script>
+
+    <!-- 7. Inicialização e event listeners -->
+    <script src="js/main.js"></script>
+
+    
+</body>
+</html>
