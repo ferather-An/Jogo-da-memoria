@@ -1,0 +1,48 @@
+/* theme.css - Temas Neon */
+
+/* PALETAS NEON */
+:root {
+    --color-neon-blue: #00E5FF;
+    --color-neon-green: #39FF14;
+    --color-neon-purple: #FF00FF;
+    --color-neon-pink: #FF10F0;
+    --color-neon-orange: #FFA500;
+}
+
+/* Tema Azul Padrão */
+:root {
+    --color-dark-bg: #0a0a1a;
+    --color-container-bg: #181829;
+    --color-card-bg: #0a0a1a;
+    --color-primary-neon: var(--color-neon-blue);
+    --color-neon-success: #00FF00;
+    --color-neon-error: #FF3366;
+}
+
+/* Tema Roxo */
+.theme-purple {
+    --color-primary-neon: var(--color-neon-purple);
+    --color-neon-success: #FFB300;
+    --color-neon-error: #FF3366;
+}
+
+/* Tema Verde */
+.theme-green {
+    --color-primary-neon: var(--color-neon-green);
+    --color-neon-success: #00BFFF;
+    --color-neon-error: #FF3366;
+}
+
+/* Tema Rosa */
+.theme-pink {
+    --color-primary-neon: var(--color-neon-pink);
+    --color-neon-success: #00FF00;
+    --color-neon-error: #00E5FF;
+}
+
+/* Tema Laranja */
+.theme-orange {
+    --color-primary-neon: var(--color-neon-orange);
+    --color-neon-success: #39FF14;
+    --color-neon-error: #FF1493;
+}
